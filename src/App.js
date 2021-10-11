@@ -1,24 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import MensajeReutilizableDayana from './components/MensajeReutilizableDayana/MensajeReutilizableDayana';
+import MensajeReutilizableJose from './components/MensajeReutilizableJose/MensajeReutilizableJose';
+import Home from "./components/Home/Home";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/dayana">Dayana</Link>
+            </li>
+            <li>
+              <Link to="/jose">Jose</Link>
+            </li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route path="/dayana">
+            <MensajeReutilizableDayana />
+          </Route>
+          <Route path="/jose">
+          <MensajeReutilizableJose />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
